@@ -1,0 +1,19 @@
+---
+- name: Update packages
+  hosts: pocserver
+  gather_facts: yes
+  tasks:
+    - name: Ping
+      ping:
+
+    - name: Run YUM update
+      yum:
+        state: latest
+        name: '*'
+      when: ansible_distribution == "CentOS"
+      
+    - name: Run APT update
+      apt:
+        state: latest
+        name: '*'
+      when: ansible_distribution == "Ubuntu"
