@@ -1,0 +1,10 @@
+---
+  - name: Copy network_config file
+    hosts: network_group
+    tasks:
+      - name: Copy file
+        copy: 
+          src: /tmp/network_config
+          dest: /tmp/
+
+  

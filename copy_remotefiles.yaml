@@ -1,0 +1,8 @@
+---
+  - name: get network_config from remotehost
+    hosts: host1
+    tasks:
+      - name: copy file
+        fetch:
+          src: /tmp/network_config
+          dest: /tmp/

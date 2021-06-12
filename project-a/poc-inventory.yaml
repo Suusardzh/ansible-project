@@ -1,0 +1,14 @@
+
+all:
+  hosts:      # "ungrouped" - add server bellow this line
+
+  children:   # ""
+    pocserver:
+      hosts:
+        centos-server:
+          ansible_host: 10.116.0.3
+          ansible_port: 55500
+
+        ubuntu-server:
+          ansible_host: 10.116.0.4
+          ansible_port: 55500

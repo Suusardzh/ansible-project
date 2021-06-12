@@ -1,0 +1,10 @@
+---
+  - name: Add  user "sam" to remote hosts
+    hosts: all
+    tasks: 
+      - name: add user Sam
+        user:
+          name: sam
+          comment: Developer
+          uid: 4500
+        
