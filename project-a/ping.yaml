@@ -4,3 +4,5 @@
   tasks:
     - name: Ping
       ping:
+      when: ansible_distribution == "CentOS" or
+            ansible_distribution == "Ubuntu"
