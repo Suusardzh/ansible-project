@@ -1,0 +1,16 @@
+---
+- name: Install vim with YUM
+  hosts: all
+  gather_facts: yes
+  tasks:
+    - name: Install vim with YUM 
+      yum:
+        name: vim
+        state: latest
+      when: ansible_pkg_mgr == "yum"
+
+    - name: Install vim with APT
+      yum:
+        name: vim
+        state: latest
+      when: ansible_pkg_mgr == "apt"
