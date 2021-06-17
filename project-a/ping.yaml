@@ -4,5 +4,5 @@
   tasks:
     - name: Ping
       ping:
-      when: ansible_distribution == "CentOS" and
-            ansible_distribution_version == "7"
+      when: ansible_distribution == "Ubuntu" and
+            ansible_distribution_version ==  "18.04"
