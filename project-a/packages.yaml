@@ -1,0 +1,27 @@
+---
+- name: install packages
+  hosts: all
+  gather_facts: true
+  tasks:
+    - name: 
+      ping:
+
+    - name: Install YUM packages
+      yum:
+        name:
+          - vim
+          - tree
+          - curl
+        state: latest
+      when: ansible_pkg_mgr == "yum"
+
+    - name: Install APT packages
+      apt:
+        name:
+          - vim
+          - tree
+          - curl
+        state: latest
+      when: ansible_pkg_mgr == "apt"
+    
+      
