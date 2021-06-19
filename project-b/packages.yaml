@@ -15,11 +15,17 @@
         
         state: latest
       when: ansible_pkg_mgr == "yum"
+      register: results
+
+    - name: Print Results
+      debug:
+        msg: "{{ results }}"
 
     - name: install packages with APT
       apt:
         name: "{{ packages }}"
           
         state: latest
-      when: ansible_pkg_mgr == "apt"
+      when: ansible_pkg_mgr == "apt" and results is failed
+
 
