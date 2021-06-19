@@ -1,0 +1,36 @@
+---
+- name: Install Apache
+  hosts: dev
+  gather_facts: yes
+  vars:
+    yum_packages:
+      - httpd
+    apt_packages:
+      - apache2
+    
+  tasks: 
+    - name: Install Apache with YUM
+      yum:
+        name: "{{ yum_packages }}"
+        state: latest
+      when: ansible_pkg_mgr == "yum" 
+      register: yum_packages_result
+
+    - name: Start apache on CentOS 
+      systemd:
+        state: started
+        name: httpd
+      when: ansible_distribution == "CentOS" and yum_packages_result is succeeded
+ 
+    - name: install Apache with APT
+      apt:
+        name: "{{ apt_packages }}"
+        state: latest
+      when: ansible_pkg_mgr == "apt"
+      register: apt_packages_result
+
+    - name: Start apache on Ubuntu
+      systemd:
+        state: started
+        name: apache2
+      when: ansible_distribution ==  "Ubuntu" and apt_packages_result is succeeded
