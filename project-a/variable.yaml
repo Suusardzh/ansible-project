@@ -1,5 +1,5 @@
 ---
-- name: Call avriables
+- name: Call varriables
   hosts: all
   gather_facts: yes
   vars:

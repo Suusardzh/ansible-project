@@ -1,0 +1,7 @@
+---
+- name: Ping the host
+  hosts: dev
+  gather_facts: no
+  tasks:
+    - name: Ping the dev host
+      ping:

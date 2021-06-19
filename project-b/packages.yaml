@@ -1,0 +1,25 @@
+---
+- name: Install packages
+  hosts: dev
+  gather_facts: yes
+  vars: 
+    packages:
+      - vim
+      - tree
+      - curl
+      - wget
+  tasks:
+    - name: install packages with YUM
+      yum:
+        name: "{{ packages }}"
+        
+        state: latest
+      when: ansible_pkg_mgr == "yum"
+
+    - name: install packages with APT
+      apt:
+        name: "{{ packages }}"
+          
+        state: latest
+      when: ansible_pkg_mgr == "apt"
+
