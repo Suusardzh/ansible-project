@@ -1,0 +1,8 @@
+#Play Variables
+facts: yes
+
+# Task Variables
+packages:
+  - tree
+  - vim
+  - curl

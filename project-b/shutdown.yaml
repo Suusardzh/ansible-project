@@ -1,0 +1,10 @@
+---
+- name: shutdown servers
+  hosts: all
+  tasks:
+   - name: ping servers
+     ping:
+
+   - name: shutdown servers
+     shell: 
+       cmd: shutdown -h now
